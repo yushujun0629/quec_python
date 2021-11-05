@@ -31,11 +31,22 @@ from machine import Pin
 import utime
 
 # 根据开发板原理图，开发板的一个LED灯连接到了Pin54，通过控制Pin54引脚，实现点灯效果
-LED = Pin(Pin.GPIO14, Pin.OUT, Pin.PULL_DISABLE, 0)
 
-while True:
+
+def led_on():
+    LED = Pin(Pin.GPIO14, Pin.OUT, Pin.PULL_DISABLE, 0)
     LED.write(1)
-    utime.sleep(1)
+
+
+def led_off():
+    LED = Pin(Pin.GPIO14, Pin.OUT, Pin.PULL_DISABLE, 0)
     LED.write(0)
-    utime.sleep(1)
+
+
+if __name__ == '__main__':
+    for i in range(10):
+        led_on()
+        utime.sleep(1)
+        led_off()
+        utime.sleep(1)
 
